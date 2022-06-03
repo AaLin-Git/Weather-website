@@ -1,0 +1,94 @@
+span a {
+  top: 0;
+  font-size: 13px;
+  color: #00aaa0;
+  text-decoration: none;
+}
+
+div #city-input {
+  background: #8ed2c9;
+  color: #fcf4d9;
+}
+
+div .btn-outline-secondary {
+  background: #74c0b6;
+  border: 1px solid #fcf4d9;
+  color: #fcf4d9;
+}
+
+div .btn-outline-secondary:hover {
+  background: #fcf4d9;
+  border: 1px solid #00aaa0;
+  color: #74c0b6;
+  transition: all 250ms ease-in-out;
+}
+
+.card-body .h1 {
+  font-size: 57px;
+  text-align: center;
+  color: #00aaa0;
+  padding: 28px;
+}
+
+.next-day {
+  color: #00aaa0;
+}
+
+.row {
+  text-align: center;
+}
+
+.card {
+  display: block;
+  margin: 0 auto;
+  width: 600px;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.card-body {
+  background: #8ed2c9;
+  border-radius: 3px;
+}
+
+.current {
+  text-align: center;
+  margin: 30px;
+  color: #fcf4d9;
+}
+
+.day {
+  font-size: 30px;
+}
+
+.icon {
+  font-size: 50px;
+  color: #d55b3e;
+}
+
+div .right-col {
+  font-size: 30px;
+}
+.right-col .currentTemperature {
+  font-size: 35px;
+}
+
+.right-col .units {
+  position: relative;
+  top: -15px;
+}
+
+div .units:hover {
+  color: #00e6d7;
+}
+
+.fa-solid {
+  color: #d55b3e;
+}
+.next-temperature {
+  color: #fcf4d9;
+}
+
+form .form-control {
+  background-color: #8ed2c9;
+  color: #fcf4d9;
+}

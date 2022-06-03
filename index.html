@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/b98a3a6587.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <div class="row" id="search-form">
+            <div class="col-8">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search the city"
+                autocomplete="off"
+                autofocus="on"
+                id="city-input"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-outline-secondary shine-btn"
+                id="button"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="button"
+                value="Current"
+                class="btn btn-outline-secondary shine-btn"
+                id="current-button"
+              />
+            </div>
+          </div>
+
+          <h1 class="h1">Amsterdam</h1>
+
+          <div class="row current">
+            <div class="col-4 day" id="current-date">Monday, 2 May</div>
+            <div class="col-4 icon">
+              <img src="img/clear-day.svg" width="110" />
+            </div>
+            <div class="col-4 right-col">
+              <div id="time">12:00</div>
+              <div>
+                <span class="currentTemperature">17</span>
+                <span class="units">
+                  <a href="#" id="celsius">°C</a>
+                  <a href="#" id="fahrenheit">°F</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row next">
+            <div class="col">
+              <div class="next-day" id="second-day">Tue</div>
+              <div>
+                <img src="img/cloudy.svg" width="40" />
+              </div>
+              <div class="next-temperature">11°C-18°C</div>
+            </div>
+            <div class="col">
+              <span class="next-day" id="third-day">Wed</span>
+              <br />
+              <img src="img/partly-cloudy-day.svg" width="40" />
+              <br />
+              <span class="next-temperature">10°C-15°C</span>
+            </div>
+            <div class="col">
+              <span class="next-day" id="fourth-day">Thu</span>
+              <br />
+              <img src="img/drizzle.svg" width="40" />
+              <br />
+              <span class="next-temperature">11°C-16°C</span>
+            </div>
+            <div class="col">
+              <span class="next-day" id="fifth-day">Fri</span>
+              <br />
+              <img src="img/rain.svg" width="40" />
+              <br />
+              <span class="next-temperature">10°C-14°C</span>
+            </div>
+            <div class="col">
+              <span class="next-day" id="sixth-day">Sat</span>
+              <br />
+              <img src="img/thunderstorms-day.svg" width="40" />
+              <br />
+              <span class="next-temperature">8°C-12°C</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
