@@ -4,6 +4,16 @@ span a {
   color: #00aaa0;
   text-decoration: none;
 }
+.GitHub-link {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 15px;
+  font-family: "Cabin Sketch", cursive;
+}
+
+p a {
+  color: #00aaa0;
+}
 
 div #city-input {
   background: #8ed2c9;
