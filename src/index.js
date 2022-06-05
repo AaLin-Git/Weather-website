@@ -1,5 +1,7 @@
 function changeFahrenheit(event) {
   event.preventDefault();
+  pressCelsius.classList.remove(`active`);
+  pressFahrenheit.classList.add(`active`);
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let fahrenheit = document.querySelector(`.currentTemperature`);
   fahrenheit.innerHTML = Math.round(fahrenheitTemperature);
@@ -9,6 +11,8 @@ function changeCelsius(event) {
   event.preventDefault;
   let celsius = document.querySelector(`.currentTemperature`);
   celsius.innerHTML = celsiusTemperature;
+  pressCelsius.classList.add(`active`);
+  pressFahrenheit.classList.remove(`active`);
 }
 
 function showWeather(response) {

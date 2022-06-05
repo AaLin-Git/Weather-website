@@ -70,11 +70,6 @@ div .btn-outline-secondary:hover {
   font-size: 30px;
 }
 
-.icon {
-  font-size: 50px;
-  color: #d55b3e;
-}
-
 div .right-col {
   font-size: 30px;
 }
@@ -82,13 +77,13 @@ div .right-col {
   font-size: 35px;
 }
 
-.right-col .units {
+.temperature-block .units {
   position: relative;
   top: -15px;
 }
 
-div .units:hover {
-  color: #00e6d7;
+.units a:hover {
+  color: #ffe693;
 }
 
 .fa-solid {
@@ -101,4 +96,13 @@ div .units:hover {
 form .form-control {
   background-color: #8ed2c9;
   color: #fcf4d9;
+}
+
+.units .active {
+  color: #fcf4d9;
+  cursor: default;
+}
+.units .active:hover {
+  color: #fcf4d9;
+  cursor: default;
 }
