@@ -32,6 +32,9 @@ function showGpsWeather(response) {
   temp.innerHTML = temperature;
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = response.data.name;
+  let iconElements = document.querySelector(`.animated-icon`);
+  iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
+  console.log(response.data.weather[0].main);
 }
 
 function getGpsPosition(position) {
@@ -72,6 +75,8 @@ let months = [
   "November",
   "December",
 ];
+
+getCurrentPosition();
 
 let currentDay = days[date.getDay()];
 let currentDate = date.getDate();
