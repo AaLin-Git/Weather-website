@@ -1,14 +1,18 @@
-function changeFahrenheit() {
+function changeFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let fahrenheit = document.querySelector(`.currentTemperature`);
-  fahrenheit.innerHTML = 68;
+  fahrenheit.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-function changeCelsius() {
+function changeCelsius(event) {
+  event.preventDefault;
   let celsius = document.querySelector(`.currentTemperature`);
-  celsius.innerHTML = 17;
+  celsius.innerHTML = celsiusTemperature;
 }
 
 function showWeather(response) {
+  celsiusTemperature = Math.round(response.data.main.temp);
   let temp = document.querySelector(`.currentTemperature`);
   let temperature = Math.round(response.data.main.temp);
   temp.innerHTML = temperature;
@@ -27,6 +31,8 @@ function showCity(event) {
 }
 
 function showGpsWeather(response) {
+  celsiusTemperature = Math.round(response.data.main.temp);
+
   let temp = document.querySelector(`.currentTemperature`);
   let temperature = Math.round(response.data.main.temp);
   temp.innerHTML = temperature;
@@ -75,6 +81,8 @@ let months = [
   "November",
   "December",
 ];
+
+let celsiusTemperature = null;
 
 getCurrentPosition();
 
