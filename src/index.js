@@ -19,9 +19,18 @@ function showWeather(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
   let temp = document.querySelector(`.currentTemperature`);
   let temperature = Math.round(response.data.main.temp);
-  temp.innerHTML = temperature;
   let iconElements = document.querySelector(`.animated-icon`);
+  let windSpeed = response.data.wind.speed;
+  let wind = document.querySelector(`.wind-speed`);
+  let humidity = response.data.main.humidity;
+  let humidityElement = document.querySelector(`.humidity`);
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector(`.description`);
+  temp.innerHTML = temperature;
   iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
+  wind.innerHTML = `Wind: ${windSpeed} km/h`;
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  descriptionElement.innerHTML = capitalizeFirstLetter(description);
 }
 
 function showCity(event) {
@@ -36,16 +45,29 @@ function showCity(event) {
   h1.innerHTML = cityInput.value;
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function showGpsWeather(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
 
   let temp = document.querySelector(`.currentTemperature`);
   let temperature = Math.round(response.data.main.temp);
-  temp.innerHTML = temperature;
   let h1 = document.querySelector(`h1`);
-  h1.innerHTML = response.data.name;
   let iconElements = document.querySelector(`.animated-icon`);
+  let windSpeed = response.data.wind.speed;
+  let wind = document.querySelector(`.wind-speed`);
+  let humidity = response.data.main.humidity;
+  let humidityElement = document.querySelector(`.humidity`);
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector(`.description`);
+  temp.innerHTML = temperature;
+  h1.innerHTML = response.data.name;
   iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
+  wind.innerHTML = `Wind: ${windSpeed} km/h`;
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  descriptionElement.innerHTML = capitalizeFirstLetter(description);
 }
 
 function getGpsPosition(position) {

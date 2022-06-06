@@ -75,17 +75,27 @@ div .btn-outline-secondary:hover {
   font-size: 30px;
 }
 
-.day {
-  font-size: 18px;
+#current-date {
+  font-size: 20px;
 }
 
-.right-col .currentTemperature {
+.day {
+  font-size: 14px;
+}
+
+/* .right-col .currentTemperature {
   font-size: 90px;
+} */
+
+.temperature-block .currentTemperature {
+  font-size: 90px;
+  position: relative;
+  top: 19px;
 }
 
 .temperature-block .units {
   position: relative;
-  top: -47px;
+  top: -28px;
 }
 
 .units a:hover {
