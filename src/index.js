@@ -20,6 +20,8 @@ function showWeather(response) {
   let temp = document.querySelector(`.currentTemperature`);
   let temperature = Math.round(response.data.main.temp);
   temp.innerHTML = temperature;
+  let iconElements = document.querySelector(`.animated-icon`);
+  iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
 }
 
 function showCity(event) {
@@ -44,7 +46,6 @@ function showGpsWeather(response) {
   h1.innerHTML = response.data.name;
   let iconElements = document.querySelector(`.animated-icon`);
   iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
-  console.log(response.data.weather[0].main);
 }
 
 function getGpsPosition(position) {
