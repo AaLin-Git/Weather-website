@@ -29,6 +29,12 @@ div #city-input {
   color: #fcf4d9;
 }
 
+div #city-input:focus {
+  background: #8ed2c9;
+  color: #fcf4d9;
+  box-shadow: 0px 0px 47px 1px rgba(251, 245, 155, 0.6);
+}
+
 div .btn-outline-secondary {
   background: #74c0b6;
   border: 1px solid #fcf4d9;
@@ -40,6 +46,7 @@ div .btn-outline-secondary:hover {
   border: 1px solid #00aaa0;
   color: #74c0b6;
   transition: all 250ms ease-in-out;
+  box-shadow: 0px 0px 47px 1px rgba(251, 245, 155, 0.6);
 }
 
 .card-body .h1 {
