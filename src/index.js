@@ -106,7 +106,7 @@ if (currentMinutes < 10) {
 }
 
 let todayDate = document.querySelector(`#current-date`);
-todayDate.innerHTML = `${currentDay}, <br /> ${currentDate} ${currentMonth}`;
+todayDate.innerHTML = `${currentDay}, ${currentDate} ${currentMonth}`;
 
 let currentTime = document.querySelector(`#time`);
 currentTime.innerHTML = `${currentHours}:${currentMinutes}`;

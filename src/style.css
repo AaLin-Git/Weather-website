@@ -1,9 +1,18 @@
 span a {
   top: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: #00aaa0;
   text-decoration: none;
 }
+
+div .row {
+  padding: 0;
+}
+
+.next {
+  text-align: center;
+}
+
 .GitHub-link {
   margin-top: 8px;
   text-align: center;
@@ -37,15 +46,11 @@ div .btn-outline-secondary:hover {
   font-size: 57px;
   text-align: center;
   color: #00aaa0;
-  padding: 28px;
+  padding-top: 28px;
 }
 
 .next-day {
   color: #00aaa0;
-}
-
-.row {
-  text-align: center;
 }
 
 .card {
@@ -61,25 +66,26 @@ div .btn-outline-secondary:hover {
 }
 
 .current {
-  text-align: center;
-  margin: 30px;
+  text-align: left;
+  margin: 10px;
   color: #fcf4d9;
 }
 
-.day {
+#time {
   font-size: 30px;
 }
 
-div .right-col {
-  font-size: 30px;
+.day {
+  font-size: 18px;
 }
+
 .right-col .currentTemperature {
-  font-size: 35px;
+  font-size: 90px;
 }
 
 .temperature-block .units {
   position: relative;
-  top: -15px;
+  top: -47px;
 }
 
 .units a:hover {
