@@ -95,14 +95,14 @@ div .btn-outline-secondary:hover {
 } */
 
 .temperature-block .currentTemperature {
-  font-size: 90px;
+  font-size: 75px;
   position: relative;
-  top: 19px;
+  top: 25px;
 }
 
 .temperature-block .units {
   position: relative;
-  top: -28px;
+  top: -16px;
 }
 
 .units a:hover {
