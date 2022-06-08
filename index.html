@@ -30,34 +30,36 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <div class="row" id="search-form">
-            <div class="col-8">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search the city"
-                autocomplete="off"
-                autofocus="on"
-                id="city-input"
-              />
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-8">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search the city"
+                  autocomplete="off"
+                  autofocus="on"
+                  id="city-input"
+                />
+              </div>
+              <div class="col-2">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-outline-secondary shine-btn"
+                  id="button"
+                />
+              </div>
+              <div class="col-2">
+                <input
+                  type="button"
+                  value="Current"
+                  class="btn btn-outline-secondary shine-btn"
+                  id="current-button"
+                />
+              </div>
             </div>
-            <div class="col-2">
-              <input
-                type="submit"
-                value="Search"
-                class="btn btn-outline-secondary shine-btn"
-                id="button"
-              />
-            </div>
-            <div class="col-2">
-              <input
-                type="button"
-                value="Current"
-                class="btn btn-outline-secondary shine-btn"
-                id="current-button"
-              />
-            </div>
-          </div>
+          </form>
 
           <h1 class="h1">Amsterdam</h1>
 

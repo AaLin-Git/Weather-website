@@ -33,16 +33,11 @@ function showWeather(response) {
   descriptionElement.innerHTML = capitalizeFirstLetter(description);
 }
 
-function showCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector(`#city-input`);
+function showCity(city) {
   let apiKey = `26310790c7af07b3a6f2f1bf2272d7f2`;
   let unit = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
   axios.get(`${apiUrl}&appid=${apiKey}&units=${unit}`).then(showWeather);
-
-  let h1 = document.querySelector(`h1`);
-  h1.innerHTML = cityInput.value;
 }
 
 function capitalizeFirstLetter(string) {
@@ -82,6 +77,14 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(getGpsPosition);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  showCity(cityInputElement.value);
+  let h1 = document.querySelector(`h1`);
+  h1.innerHTML = cityInputElement.value;
+}
+
 let date = new Date();
 
 let days = [
@@ -108,11 +111,6 @@ let months = [
   "November",
   "December",
 ];
-
-let celsiusTemperature = null;
-
-getCurrentPosition();
-
 let currentDay = days[date.getDay()];
 let currentDate = date.getDate();
 let currentMonth = months[date.getMonth()];
@@ -126,7 +124,6 @@ let currentMinutes = date.getMinutes();
 if (currentMinutes < 10) {
   currentMinutes = `0${currentMinutes}`;
 }
-
 let todayDate = document.querySelector(`#current-date`);
 todayDate.innerHTML = `${currentDay}, ${currentDate} ${currentMonth}`;
 
@@ -148,8 +145,10 @@ fifthDay.innerHTML = days[(date.getDay() + 4) % 7];
 let sixthDay = document.querySelector(`#sixth-day`);
 sixthDay.innerHTML = days[(date.getDay() + 5) % 7];
 
-let form = document.querySelector(`#button`);
-form.addEventListener(`click`, showCity);
+let celsiusTemperature = null;
+
+let form = document.querySelector(`#search-form`);
+form.addEventListener(`submit`, handleSubmit);
 
 let pressFahrenheit = document.querySelector(`#fahrenheit`);
 pressFahrenheit.addEventListener(`click`, changeFahrenheit);
@@ -159,3 +158,5 @@ pressCelsius.addEventListener(`click`, changeCelsius);
 
 let pressCurrent = document.querySelector(`#current-button`);
 pressCurrent.addEventListener(`click`, getCurrentPosition);
+
+showCity(`Amsterdam`);
