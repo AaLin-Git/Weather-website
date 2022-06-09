@@ -1,3 +1,78 @@
+function formatDate() {
+  let date = new Date();
+  let currentHours = date.getHours();
+  if (currentHours < 10) {
+    currentHours = `0${currentHours}`;
+  }
+
+  let currentMinutes = date.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  let days = [
+    `Sunday`,
+    `Monday`,
+    `Tuesday`,
+    `Wednesday`,
+    `Thursday`,
+    `Friday`,
+    `Saturday`,
+  ];
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let currentDay = days[date.getDay()];
+  let currentDate = date.getDate();
+  let currentMonth = months[date.getMonth()];
+  let todayDate = document.querySelector(`#current-date`);
+  let currentTime = document.querySelector(`#time`);
+  todayDate.innerHTML = `${currentDay}, ${currentDate} ${currentMonth}`;
+  currentTime.innerHTML = `${currentHours}:${currentMinutes}`;
+}
+
+function displayTemperature(response) {
+  let city = document.querySelector(`h1`);
+  let temp = document.querySelector(`.currentTemperature`);
+  let iconElements = document.querySelector(`.animated-icon`);
+  let wind = document.querySelector(`.wind-speed`);
+  let humidityElement = document.querySelector(`.humidity`);
+  let descriptionElement = document.querySelector(`.description`);
+
+  celsiusTemperature = Math.round(response.data.main.temp);
+
+  city.innerHTML = response.data.name;
+  temp.innerHTML = Math.round(celsiusTemperature);
+  iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
+  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  descriptionElement.innerHTML = capitalizeFirstLetter(
+    response.data.weather[0].description
+  );
+
+  formatDate();
+  getForecast(response.data.coord);
+}
+
+function search(city) {
+  let apiKey = `26310790c7af07b3a6f2f1bf2272d7f2`;
+  let unit = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function changeFahrenheit(event) {
   event.preventDefault();
   pressCelsius.classList.remove(`active`);
@@ -13,31 +88,6 @@ function changeCelsius(event) {
   celsius.innerHTML = celsiusTemperature;
   pressCelsius.classList.add(`active`);
   pressFahrenheit.classList.remove(`active`);
-}
-
-function showWeather(response) {
-  celsiusTemperature = Math.round(response.data.main.temp);
-  let temp = document.querySelector(`.currentTemperature`);
-  let temperature = Math.round(response.data.main.temp);
-  let iconElements = document.querySelector(`.animated-icon`);
-  let windSpeed = response.data.wind.speed;
-  let wind = document.querySelector(`.wind-speed`);
-  let humidity = response.data.main.humidity;
-  let humidityElement = document.querySelector(`.humidity`);
-  let description = response.data.weather[0].description;
-  let descriptionElement = document.querySelector(`.description`);
-  temp.innerHTML = temperature;
-  iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
-  wind.innerHTML = `Wind: ${windSpeed} km/h`;
-  humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  descriptionElement.innerHTML = capitalizeFirstLetter(description);
-}
-
-function showCity(city) {
-  let apiKey = `26310790c7af07b3a6f2f1bf2272d7f2`;
-  let unit = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}`;
-  axios.get(`${apiUrl}&appid=${apiKey}&units=${unit}`).then(showWeather);
 }
 
 function capitalizeFirstLetter(string) {
@@ -80,70 +130,39 @@ function getCurrentPosition() {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  showCity(cityInputElement.value);
+  search(cityInputElement.value);
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = cityInputElement.value;
 }
 
-let date = new Date();
+function displayForecast() {
+  let forecastElement = document.querySelector(`#forecast`);
 
-let days = [
-  `Sunday`,
-  `Monday`,
-  `Tuesday`,
-  `Wednesday`,
-  `Thursday`,
-  `Friday`,
-  `Saturday`,
-];
+  let forecastHTML = `<div class="row next">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col">
+      <div class="weather-forecast-date">
+        ${day}
+      </div>
+      <div>
+        <img class="animated-icon" src="img/clear.svg" width="40" />
+      </div>
+      <div class="weather-forecast-temperatures">
+      <span class="weather-forecast-temperature-max">18</span>
+      <span class="weather-forecast-temperature-min">11</span>
+      </div>
+    </div>
+  
+  `;
+  });
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let currentDay = days[date.getDay()];
-let currentDate = date.getDate();
-let currentMonth = months[date.getMonth()];
-
-let currentHours = date.getHours();
-if (currentHours < 10) {
-  currentHours = `0${currentHours}`;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
-
-let currentMinutes = date.getMinutes();
-if (currentMinutes < 10) {
-  currentMinutes = `0${currentMinutes}`;
-}
-let todayDate = document.querySelector(`#current-date`);
-todayDate.innerHTML = `${currentDay}, ${currentDate} ${currentMonth}`;
-
-let currentTime = document.querySelector(`#time`);
-currentTime.innerHTML = `${currentHours}:${currentMinutes}`;
-
-let secondDay = document.querySelector(`#second-day`);
-secondDay.innerHTML = days[(date.getDay() + 1) % 7];
-
-let thirdDay = document.querySelector(`#third-day`);
-thirdDay.innerHTML = days[(date.getDay() + 2) % 7];
-
-let fourthDay = document.querySelector(`#fourth-day`);
-fourthDay.innerHTML = days[(date.getDay() + 3) % 7];
-
-let fifthDay = document.querySelector(`#fifth-day`);
-fifthDay.innerHTML = days[(date.getDay() + 4) % 7];
-
-let sixthDay = document.querySelector(`#sixth-day`);
-sixthDay.innerHTML = days[(date.getDay() + 5) % 7];
 
 let celsiusTemperature = null;
 
@@ -159,4 +178,5 @@ pressCelsius.addEventListener(`click`, changeCelsius);
 let pressCurrent = document.querySelector(`#current-button`);
 pressCurrent.addEventListener(`click`, getCurrentPosition);
 
-showCity(`Amsterdam`);
+search(`Amsterdam`);
+displayForecast();
