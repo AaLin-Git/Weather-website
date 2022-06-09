@@ -43,6 +43,44 @@ function formatDate() {
   currentTime.innerHTML = `${currentHours}:${currentMinutes}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = `26310790c7af07b3a6f2f1bf2272d7f2`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector(`#forecast`);
+
+  let forecastHTML = `<div class="row next">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col">
+      <div class="weather-forecast-date">
+        ${day}
+      </div>
+      <div>
+        <img class="animated-icon" src="img/clear.svg" width="40" />
+      </div>
+      <div class="weather-forecast-temperatures">
+      <span class="weather-forecast-temperature-max">18</span>
+      <span class="weather-forecast-temperature-min">11</span>
+      </div>
+    </div>
+  
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let city = document.querySelector(`h1`);
   let temp = document.querySelector(`.currentTemperature`);
@@ -135,35 +173,6 @@ function handleSubmit(event) {
   h1.innerHTML = cityInputElement.value;
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector(`#forecast`);
-
-  let forecastHTML = `<div class="row next">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="col">
-      <div class="weather-forecast-date">
-        ${day}
-      </div>
-      <div>
-        <img class="animated-icon" src="img/clear.svg" width="40" />
-      </div>
-      <div class="weather-forecast-temperatures">
-      <span class="weather-forecast-temperature-max">18</span>
-      <span class="weather-forecast-temperature-min">11</span>
-      </div>
-    </div>
-  
-  `;
-  });
-
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
-}
-
 let celsiusTemperature = null;
 
 let form = document.querySelector(`#search-form`);
@@ -179,4 +188,3 @@ let pressCurrent = document.querySelector(`#current-button`);
 pressCurrent.addEventListener(`click`, getCurrentPosition);
 
 search(`Amsterdam`);
-displayForecast();
