@@ -109,7 +109,7 @@ function displayTemperature(response) {
   city.innerHTML = response.data.name;
   temp.innerHTML = Math.round(celsiusTemperature);
   iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
-  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
   humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   descriptionElement.innerHTML = capitalizeFirstLetter(
     response.data.weather[0].description
@@ -163,7 +163,7 @@ function showGpsWeather(response) {
   temp.innerHTML = temperature;
   h1.innerHTML = response.data.name;
   iconElements.setAttribute(`src`, `img/${response.data.weather[0].main}.svg`);
-  wind.innerHTML = `Wind: ${windSpeed} km/h`;
+  wind.innerHTML = `Wind: ${windSpeed} m/s`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   descriptionElement.innerHTML = capitalizeFirstLetter(description);
 }
