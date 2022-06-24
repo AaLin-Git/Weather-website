@@ -183,7 +183,11 @@ function getCurrentPosition() {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
+  if (cityInputElement.value == "") {
+    search("Amsterdam");
+  } else {
+    search(cityInputElement.value);
+  }
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = cityInputElement.value;
 }
