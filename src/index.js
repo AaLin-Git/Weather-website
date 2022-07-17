@@ -166,6 +166,9 @@ function showGpsWeather(response) {
   wind.innerHTML = `Wind: ${windSpeed} m/s`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   descriptionElement.innerHTML = capitalizeFirstLetter(description);
+
+  formatDate();
+  getForecast(response.data.coord);
 }
 
 function getGpsPosition(position) {
